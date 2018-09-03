@@ -16,7 +16,7 @@ self.addEventListener('activate', () => {
 
 self.addEventListener('message', (e) => {
     if(e.data === 'update_self') {
-      console.log("The service worker is updating")
+      console.log("The service worker is updating");
       self.skipWaiting();
     };
   });
