@@ -19,15 +19,26 @@ if (navigator.serviceWorker) {
       // The following is the code for example 2.  ...the update found listener
       // we set a handler function equal to the listener.
 
+      // if(registration.active) {
+      //   registration.onupdatefound = () => {
+      //     let newSW = registration.installing;
+      //     //Prompt the user for update
+      //     if (confirm("App update found. Do you want to update now?")) {
+      //       newSW.postMessage('update_self');
+      //     };
+      //   };
+      // };
+
       if(registration.active) {
-        registration.onupdatefound = () => {
-          let newSW = registration.installing;
-          //Prompt the user for update
-          if (confirm("App update found. Do you want to update now?")) {
-            newSW.postMessage('update_self');
-          };
-        };
-      };
+        registration.active.postMessage('respond to this');
+      }
 
     }).catch(console.log);
+
+  // This is the code for Example 3.  listening fort messages from the service worker.
+
+  navigator.serviceWorker.addEventListener('message', (e) => {
+    console.log(e.data);
+  })     
+
 }

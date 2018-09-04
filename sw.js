@@ -25,6 +25,12 @@ self.addEventListener('activate', () => {
 
 self.addEventListener('message', (e) => {
 
+  // Respond to all clients of a service worker.
+  self.clients.matchAll()
+    .then(clients => {
+      clients.forEach(client => {
+        client.postMessage("Hi.  This is a message from the service worker to all clients.");
+      })
+    })
 
-  
 });
